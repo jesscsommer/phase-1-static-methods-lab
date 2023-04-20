@@ -8,15 +8,15 @@ class Formatter {
   static titleize(string){
     const bannedWords = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from']
     const allWords = string.split(' ')
-    const title = []
-    for (let word in allWords) {
-      if (bannedWords.includes(word) === false){
-          word.capitalize
-          title.push(word)
-      } else {
+    const title = [Formatter.capitalize(allWords[0])]
+    allWords.slice(1).forEach(word => {
+      if (bannedWords.includes(word)){
         title.push(word)
+      } else {
+        title.push(Formatter.capitalize(word))
       }
-    } 
+    })
     return title.join(' ')
   }
 }
+
